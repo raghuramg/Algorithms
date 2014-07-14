@@ -1,16 +1,13 @@
 Array.class_eval do
-  def binary_search(element)
-    search_element(element, 0, self.length-1)
-  end
-  
-  def search_element(element, from, to)
+
+  def binary_search(element, from = 0, to = self.length-1)
     mid = (from + to)/2
     return nil if from == mid
     
     if element > self[mid]
-      search_element(element, mid, to)
+      binary_search(element, mid, to)
     elsif element < self[mid]
-      search_element(element, from, mid)
+      binary_search(element, from, mid)
     else
       return mid
     end
